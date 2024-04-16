@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Potter - Aventura Mágica</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fcf9f9;
+        }
+        .container {
+            max-width: 400px; /* Cambia el valor de max-width según tus necesidades */
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fcf9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(5, 0, 0, 0.1);
+        }
+        h1, h2, p {
+            text-align: center;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Harry Potter - Aventura Mágica</h1>
+        <form id="inicioForm">
+            <label for="nombre">¡Bienvenido al mundo mágico! Por favor ingresa tu nombre:</label><br>
+            <input type="text" id="nombre" name="nombre"><br><br>
+            <button type="button" onclick="iniciarJuego()">Comenzar</button>
+        </form>
+        <div id="resultado" style="display: none;">
+            <!-- Aquí se mostrará el resultado del juego -->
+        </div>
+    </div>
+
+    <script>
+        function iniciarJuego() {
+            var nombre = document.getElementById('nombre').value;
+            var resultado = "";
+            resultado += "<h2>Bienvenido " + nombre + "</h2>";
+            resultado += "<p>Muy bien " + nombre + ". Regresemos al año 1997. Estás a punto de vivir una de las mejores aventuras de tu vida.</p>";
+            resultado += "<p>Acabas de recibir tu carta de invitación para unirte a Hogwarts colegio de magia y hechicería, ésta dice que te dirijas al callejón Diagon a adquirir todo lo necesario para tu primer año en Hogwarts.</p>";
+            resultado += "<p>Al llegar no sabes cómo empezar así que decides preguntar.</p>";
+            resultado += "<p>Hay un tipo envuelto en una capucha negra que se ve algo misterioso y también un hombre gigante de casi 3 metros barbudo que se mira muy poco confiable. ¿Con quién decides hablar?</p>";
+            resultado += '<button onclick="elegirOpcion(1)">Tipo encapuchado</button>';
+            resultado += '<button onclick="elegirOpcion(2)">Hombre gigante</button>';
+            document.getElementById('resultado').innerHTML = resultado;
+            document.getElementById('inicioForm').style.display = 'none';
+            document.getElementById('resultado').style.display = 'block';
+        }
+
+        function elegirOpcion(opcion) {
+            var resultado = "";
+            if (opcion === 1) {
+                resultado += "<p>¡Oh no! Mala suerte, te acabas de encontrar con un mortífago que odia a los muggles así que te borra de la existencia.</p>";
+                resultado += "<h2>FIN DEL JUEGO</h2>";
+            } else if (opcion === 2) {
+                resultado += "<p>Genial es el guardabosques de Hogwarts, Hagrid, es muy amable y te ayuda a conseguir todo lo que necesitas.</p>";
+                resultado += "<p>Es tiempo de abordar el tren a Hogwarts, el boleto dice 'Anden 9 3/4', no existe tal andén así que piensas que puede ser un error del boleto.</p>";
+                resultado += '<button onclick="elegirOpcion(3)">Preguntar a un policía</button>';
+                resultado += '<button onclick="elegirOpcion(4)">Subir al tren del andén 9</button>';
+            } else if (opcion === 3) {
+                resultado += "<p>El policía te tacha de loco y te dice que no lo hagas perder el tiempo.</p>";
+                resultado += "<p>Te sientes confundido pero a lo lejos miras a unos chicos atravesar la pared como si ésta no existiera, te acercas y te ayudan a cruzar, gracias a ellos ahora estás en el tren directo a Hogwarts. ¡Bien hecho!</p>";
+                resultado += '<button onclick="elegirOpcion(5)">Continuar</button>';
+            } else if (opcion === 4) {
+                resultado += "<p>¡Como se te ocurre hacer eso! Ahora perdiste el tren a Hogwarts y tu oportunidad de ser un mago.</p>";
+                resultado += "<h2>FIN DEL JUEGO</h2>";
+            } else if (opcion === 5) {
+                resultado += "<p>Llegas a la estación de Hogwarts y miras a Hagrid de nuevo, él está ahí para llevarlos en bote al castillo de Hogwarts.</p>";
+                resultado += "<p>Al llegar los recibe una mujer con vestimenta verde esmeralda y sombrero puntiagudo, ella es la profesora McGonagall.</p>";
+                resultado += "<p>Se dirigen al gran comedor en donde están todo los estudiantes esperando su ingreso y donde el sombrero seleccionador les dirá la casa a la que pertenecerán.</p>";
+                resultado += "<p>Estás super nervioso y de pronto escuchas decir a la profesora McGonagall:</p>";
+                resultado += '<button onclick="elegirOpcion(6)">Gryffindor</button>';
+                resultado += '<button onclick="elegirOpcion(7)">Hufflepuff</button>';
+                resultado += '<button onclick="elegirOpcion(8)">Ravenclaw</button>';
+                resultado += '<button onclick="elegirOpcion(9)">Slytherin</button>';
+            } else if (opcion === 6) {
+                resultado += "<p>Comienzas a escuchar algunos susurros y palabras provenientes del sombrero y de pronto un fuerte grito: '¡Gryffindor!'</p>";
+                resultado += "<p>Toda la mesa de Gryffindor empieza a gritar y aplaudir de emoción, ahora eres uno de ellos y oficialmente un mago. Al sombrero realmente no le importaba tu elección, él mira tu interior para saber en cuál casa eres más apto ¿Deseas continuar?.</p>";
+                resultado += '<button onclick="elegirOpcion(10)">Sí</button>';
+                resultado += '<button onclick="elegirOpcion(11)">No</button>';
+            } else if (opcion === 7) {
+                resultado += "<p>Has sido seleccionado para Hufflepuff. ¡Felicidades!  ¿Deseas continuar?</p>";
+                resultado += '<button onclick="elegirOpcion(10)">Sí</button>';
+                resultado += '<button onclick="elegirOpcion(11)">No</button>';
+            } else if (opcion === 8) {
+                resultado += "<p>Has sido seleccionado para Ravenclaw. ¡Felicidades!    ¿Deseas continuar?</p>";
+                resultado += '<button onclick="elegirOpcion(10)">Sí</button>';
+                resultado += '<button onclick="elegirOpcion(11)">No</button>';
+            } else if (opcion === 9) {
+                resultado += "<p>Has sido seleccionado para Slytherin. ¡Felicidades!     ¿Deseas continuar?</p>";
+                resultado += '<button onclick="elegirOpcion(10)">Sí</button>';
+                resultado += '<button onclick="elegirOpcion(11)">No</button>';
+            } else if (opcion === 10) {
+                resultado += "<p>Aquí termina el capítulo 1</p>";
+                resultado += '<button onclick="elegirOpcion(12)">Continuar</button>';
+            } else if (opcion === 11) {
+                resultado += "<p>¡Gracias por jugar, espero lo hayas disfrutado! ¡Nos vemos luego!</p>";
+            } else if (opcion === 12) {
+                resultado += "<p>Ahora es tu primer semana en Hogwarts, estás en la clase de vuelo con escobas, tu instructora es Madame Hooche.</p>";
+                resultado += "<p>Ella se ocupa un momento y los deja solos en el patio, no sin antes advertirles que no tienen permitido elevar las escobas en el aire sin ella presente, de lo contrario habrá consecuencias graves.</p>";
+                resultado += "<p>Un niño muy poco amigable te reta para que subas a volar y te llama gallina, él sube a su escoba para que lo sigas. ¿Qué decides?</p>";
+                resultado += '<button onclick="elegirOpcion(13)">Demostrarle que no eres una gallina</button>';
+                resultado += '<button onclick="elegirOpcion(14)">Ignorarlo</button>';
+            } else if (opcion === 13) {
+                resultado += "<p>¡¿QUÉ HACES?! No eres Harry Potter genio, Madame Hooche llegó en ese momento y ahora fuiste expulsado de Hogwarts, ¡no duraste ni una semana!</p>";
+                resultado += "<h2>FIN DEL JUEGO</h2>";
+            } else if (opcion === 14) {
+                resultado += "<p>Así es no te dejes provocar, Madame Hooche llegó en ese momento, se puso furiosa y expulsó al graciosito de Hogwarts.</p>";
+                resultado += "<p>¡Bien hecho!, pasaste la primer prueba!</p>";
+                resultado += '<button onclick="elegirOpcion(15)">Continuar</button>';
+            } else if (opcion === 15) {
+                resultado += "<p>Ahora estás en la clase de encantamientos a cargo del profesor Flitwick, les pidió hacer el encantamiento levitativo para hacer flotar una pluma.</p>";
+                resultado += "<p>¿Cómo lo mencionas?</p>";
+                resultado += '<button onclick="elegirOpcion(16)">Wingardium Leviosa</button>';
+                resultado += '<button onclick="elegirOpcion(17)">Winguardium Leviosaa</button>';
+            } else if (opcion === 16) {
+                resultado += "<p>¡Excelente! Tu pluma flota, qué bien.</p>";
+                resultado += "<p>Tu profesor te alaba y te felicita. ¡Bien hecho!</p>";
+                resultado += '<button onclick="elegirOpcion(18)">Continuar</button>';
+            } else if (opcion === 17) {
+                resultado += "<p>¡Oh no! Qué torpe, tu varita explotó en tu cara y todos se burlaron de ti, suerte para la próxima.</p>";
+                resultado += "<h2>FIN DEL JUEGO</h2>";
+            } else if (opcion === 18) {
+                resultado += "<p>Ahora estás en la clase de adivinación impartida por la Srita. Trelawney, tú eres una persona escéptica así que piensas que esta clase es una pérdida de tiempo.</p>";
+                resultado += "<p>La Srita. Trelawney te elige para adivinar tu futuro, ¿Aceptas?</p>";
+                resultado += '<button onclick="elegirOpcion(19)">Sí</button>';
+                resultado += '<button onclick="elegirOpcion(20)">No</button>';
+            } else if (opcion === 19) {
+                resultado += "<p>Tienes mucha curiosidad así que accedes. Ella toca tu cabeza unos segundos y de pronto pega un grito que asusta a toda la clase.</p>";
+                resultado += "<p>Muy asustada te dice que debes cuidarte ya que morirás dentro de una hora, tú te ríes ya que no crees en esas tonterías.</p>";
+                resultado += "<p>Como era de esperarse no sucedió nada y ya has escuchado sobre varios alumnos que pasaron por lo mismo así que dicen que sus profecías nunca se cumplen.</p>";
+                resultado += "<p>Ya terminó tu día en Hogwarts, es hora de ir a dormir.</p>";
+                resultado += '<button onclick="elegirOpcion(21)">Continuar</button>';
+            } else if (opcion === 20) {
+                resultado += "<p>Bueno, eso es todo por hoy, ya es hora de ir a dormir.</p>";
+                resultado += "<p>¡Gracias por jugar, espero lo hayas disfrutado! ¡Nos vemos luego!</p>";
+            } else if (opcion === 21) {
+                resultado += "<p>Han pasado algunos meses, has progresado mucho como mago, con cada día que pasa dejas de ser un muggle y eres cada vez más un mago.</p>";
+                resultado += "<p>Te has dado cuenta que cosas desagradables están sucediendo en el mundo mágico, 'El que no debe ser nombrado' planea apoderarse de todo el mundo.</p>";
+                resultado += "<p>Recientemente han desaparecido algunos de tus profesores y el director de Hogwarts fue asesinado. Es tu primer año así que no sabes mucho sobre eso.</p>";
+                resultado += "<p>Una tarde gris les comunican de emergencia que la guerra mágica está cerca y tienen que prepararse para defender su escuela.</p>";
+                resultado += "<p>Todos están muy asustados, apenas son unos magos principiantes, nadie sabe qué hacer.</p>";
+                resultado += "<p>¿Qué decides?</p>";
+                resultado += '<button onclick="elegirOpcion(22)">Quedarte a luchar con la posibilidad de morir</button>';
+                resultado += '<button onclick="elegirOpcion(23)">Intentar huir a las afueras de Hogwarts para no involucrarte</button>';
+            } else if (opcion === 22) {
+                resultado += "<p>Muy bien te quedas con tus amigos, de pronto escuchas como los enemigos irrumpen en el castillo.</p>";
+                resultado += "<p>Todos están peleando...</p>";
+                resultado += '<button onclick="elegirOpcion(24)">Quedarte en tu sala común</button>';
+                resultado += '<button onclick="elegirOpcion(25)">Salir a pelear</button>';
+            } else if (opcion === 23) {
+                resultado += "<p>Ay no! Al llegar a la salida el ejército enemigo ya está ahí, 'El que no debe ser nombrado' te asesina sin pensarlo.</p>";
+                resultado += "<h2>FIN DEL JUEGO</h2>";
+            } else if (opcion === 24) {
+                resultado += "<p>Debido a todas las explosiones, la torre de tu sala común se derrumba y mueres aplastado por los escombros.</p>";
+                resultado += "<h2>FIN DEL JUEGO</h2>";
+            } else if (opcion === 25) {
+                resultado += "<p>Sales al pasillo principal y miras un escenario lleno de muertos y magos de ambos bandos lanzando hechizos sin cesar, risas macabras de los villanos y gritos de agonía provenientes de todas partes.</p>";
+                resultado += "<p>No te diste cuenta y te cruzaste con una mortífaga vestida de negro, con el oscuro pelo chino hecho un desastre y con una expresión facial loca sedienta de muerte.</p>";
+                resultado += "<p>¿Qué haces?</p>";
+                resultado += '<button onclick="elegirOpcion(26)">Rogarle que te deje ir</button>';
+                resultado += '<button onclick="elegirOpcion(27)">Lanzarle uno de tus hechizos</button>';
+            } else if (opcion === 26) {
+                resultado += "<p>No importa lo que hagas, ella te lanza uno de los 3 maleficios prohibidos acabando con tu vida al instante.</p>";
+                resultado += "<h2>FIN DEL JUEGO</h2>";
+            } else if (opcion === 27) {
+                resultado += "<p>Eres un mago principiante, tus hechizos no son nada para ella. No importa lo que hagas, ella te lanza uno de los 3 maleficios prohibidos acabando con tu vida al instante.</p>";
+                resultado += "<h2>FIN DEL JUEGO</h2>";
+            }
+            document.getElementById('resultado').innerHTML = resultado;
+        }
+    </script>
+</body>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    #video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+    }
+    .content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: white;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 3em;
+    }
+</style>
+</head>
+<body>
+<video autoplay muted loop id="video-background">
+    <source src="callejon diagon.mp4" type="video/mp4">
+    
+</video>
+<div class="content">
+    <h1>Puro Upmf</h1>
+    <p>wenas</p>
+</div>
+</body>
+</html>
